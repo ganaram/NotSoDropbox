@@ -12,6 +12,12 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         $users = factory(App\User::class, 3)->create();
-        $file = factory(App\Archivo::class, 20)->create();
+        $files = factory(App\Archivo::class, 20)->create();
+
+        $users->each(function(App\User $user) use ($files){
+            $users->files()->attach(
+                $files->random(random_int(1,3))
+            );        
+        });
     }
 }
