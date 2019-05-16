@@ -1,7 +1,6 @@
 <?php
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
-use App\File;
 use Illuminate\Support\Str;
 use Faker\Generator as Faker;
 
@@ -16,11 +15,11 @@ use Faker\Generator as Faker;
 |
 */
 
-$factory->define(File::class, function (Faker $faker) {
+$factory->define(App\Archivo::class, function (Faker $faker) {
     $name = $faker->name;
     return [
         'user_id' => random_int(1,3),
         'name' => $name,
-        'description' => $faker->text(300),
+        'description' => $faker->text(100),
     ];
 });
