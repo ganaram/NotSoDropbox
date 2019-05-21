@@ -17,7 +17,6 @@ Route::get('/', function () {
 
 Route::resource('/files','FileController');
 
-Route::get('/home', 'HomeController@index')->name('home');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
