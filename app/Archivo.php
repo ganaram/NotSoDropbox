@@ -14,4 +14,10 @@ class Archivo extends Model
     {
         $this->belongsTo(User::clas);
     }
+
+    public function getNameAttribute($name){
+        if( !$name||starts_with($name, 'http')){
+            return $name;    
+        }
+        return Storage::disk('public')->url($name);}
 }
