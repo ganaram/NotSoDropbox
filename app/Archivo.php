@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Storage;
 class Archivo extends Model
 {
     protected $fillable = [
-        'file', 'description','user_id','name'
+        'file', 'description','user_id','name','slug'
     ];
 
     public function user()

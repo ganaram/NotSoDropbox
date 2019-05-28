@@ -42,11 +42,25 @@ class FileController extends Controller
         Archivo::create([
             'user_id' => $request->user()->id,
             'name'          => request('name'),
+            'slug'          => str_slug(request('name'),'-'),
             'description'   => request('description'),
             'archivo'       => $theFile->store('files','public')
         ]);
         
         return redirect('/');
 
+    }
+
+    public function show($slug){
+        $archivo = Archivo::where('slug', $slug)->firstOrFail();
+
+        return view('public.files.show', ['archivo' => $archivo]);
+    }
+
+    public function destroy(Archivo $archivo){
+
+        $archivo->delete();
+
+        return redirect('/');
     }
 }

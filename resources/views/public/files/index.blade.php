@@ -15,12 +15,16 @@
   <div class="card-header bg-dark">
   </div>
   <div class="card-body">
-    <h5 class="card-title">{{ $file->name }}</h5>
+    <h5 class="card-title">{{ $file->slug }}</h5>
     <p class="card-text">{{$file->description}}</p>
     <div class="btn-group float-right" role="group">
-    <a href="#" class="btn btn-primary">Mostrar</a>
+    <a href="/files/{{ $file->slug }}" class="btn btn-primary">Mostrar</a>
     <a href="#" class="btn btn-warning">Editar</a>
-    <a href="#" class="btn btn-danger">Borrar</a>
+    <form action="/files/{{ $file->slug }}" method="post">
+      @csrf
+      @method('delete')
+      <button type="submit" class="btn btn-danger">Borrar</button>
+  </form>
     </div>
   </div>
 </div>
