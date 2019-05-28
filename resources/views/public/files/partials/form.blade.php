@@ -1,5 +1,4 @@
 <div class="row">
-    <div class="col">
         <div class="form-group">
             <label for="file">Archivo a subir:</label>
                 <input type="file" id="file" name="file" class="form-control-file mt-1" value="{{ isset($file)?$file->file:old('file') }}">
@@ -19,4 +18,3 @@
                     </div>
                 @endif
         </div>
-</div>

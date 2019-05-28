@@ -60,7 +60,6 @@
                 </li>
                 @endguest
             </ul>
-          </div>
           </nav>
           <div class="container">
             <main class="py-4">
@@ -68,6 +67,7 @@
             </main>
         </div>
 
+    </div>
     </div>
 </body>
 </html>

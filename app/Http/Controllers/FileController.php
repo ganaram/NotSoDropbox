@@ -54,7 +54,7 @@ class FileController extends Controller
             'user_id'       => $request->user()->id,
             'file'          => $theFile->store('files','public'),
             'description'   => request('description')
-        ]);     
+        ]);
         
         return redirect('/');
 
