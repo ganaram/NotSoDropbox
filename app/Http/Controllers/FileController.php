@@ -36,10 +36,10 @@ class FileController extends Controller
 
     public function store()
     {
-        $theFile = $request->file('file');
+        $theFile = request()->file('file');
 
         request()->validate([
-            $theFile  => 'required|file|max:10240',
+            'file'  => 'required|file|max:10240',
             'description' => 'required|string|min:20'
         ],[
             'file.required' => 'Pero adjunta algo, zopenco.',
@@ -51,8 +51,8 @@ class FileController extends Controller
         ]);
 
         $theFile = Archivo::create([
-            'user_id'       => $request->user()->id,
-            'file'          => $theFile->store('files','public'),
+            'user_id' => request()  ->user()->id,
+            'name'          => $theFile->store('files','public'),
             'description'   => request('description')
         ]);
         
