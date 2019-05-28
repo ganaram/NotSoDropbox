@@ -21,7 +21,8 @@ class FileRequest extends FormRequest
     {
         return [
             'file'  => 'required|file|max:10240',
-            'description' => 'required|string|min:20'
+            'description' => 'required|string|min:20',
+            'name'        => 'required'
         ];
     }
     public function messages()
@@ -32,8 +33,9 @@ class FileRequest extends FormRequest
             'file.max'  => 'Tampoco me subas tu carpeta del porno.',
             'description.required' => 'Si hace falta invéntatela, pero no lo dejes vacío.',
             'description.string'   => 'Introduce texto, no el nuevo tema de Porta.',
-            'description.min' => 'Mínimo 20 caracteres, desgraciao.
-        ]
+            'description.min' => 'Mínimo 20 caracteres, desgraciao.',
+            'name.required' => 'Adjunta un nombre,'
+        ];
     }
     public function attributes(){
         return [

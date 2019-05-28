@@ -42,7 +42,7 @@ class User extends Authenticatable
         return $this->hasMany(Archivo::class);
     }
 
-    public function owns()
+    public function owns(Archivo $archivo)
     {
         return $this->id == $archivo->user_id;
     }

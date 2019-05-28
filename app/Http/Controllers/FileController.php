@@ -6,6 +6,7 @@ use App\Archivo;
 use App\User;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
+use App\Http\Requests\FileRequest;
 
 class FileController extends Controller
 {
@@ -34,26 +35,15 @@ class FileController extends Controller
 
     }
 
-    public function store()
+    public function store(FileRequest $request)
     {
-        $theFile = request()->file('file');
+        $theFile = $request->file('file');
 
-        request()->validate([
-            'file'  => 'required|file|max:10240',
-            'description' => 'required|string|min:20'
-        ],[
-            'file.required' => 'Pero adjunta algo, zopenco.',
-            'file.file' => 'Un archivo, cigoto.',
-            'file.max'  => 'Tampoco me subas tu carpeta del porno.',
-            'description.required' => 'Si hace falta invéntatela, pero no lo dejes vacío.',
-            'description.string'   => 'Introduce texto, no el nuevo tema de Porta.',
-            'description.min' => 'Mínimo 20 caracteres, desgraciao.'
-        ]);
-
-        $theFile = Archivo::create([
-            'user_id' => request()  ->user()->id,
-            'name'          => $theFile->store('files','public'),
-            'description'   => request('description')
+        Archivo::create([
+            'user_id' => $request->user()->id,
+            'name'          => request('name'),
+            'description'   => request('description'),
+            'archivo'       => $theFile->store('files','public')
         ]);
         
         return redirect('/');

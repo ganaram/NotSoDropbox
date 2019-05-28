@@ -8,12 +8,12 @@ use Illuminate\Support\Facades\Storage;
 class Archivo extends Model
 {
     protected $fillable = [
-        'file', 'description'
+        'file', 'description','user_id','name'
     ];
 
     public function user()
     {
-        $this->belongsTo(User::clas);
+        return $this->belongsTo(User::class);
     }
 
     public function getNameAttribute($name){
