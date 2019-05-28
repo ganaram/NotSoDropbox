@@ -3,7 +3,7 @@
 @section('content')
 
 
-<form action="/files" method="post" enctype="multipart/form-data" ovalidate>
+<form action="/files" method="post" enctype="multipart/form-data" novalidate>
 
     @csrf
 
