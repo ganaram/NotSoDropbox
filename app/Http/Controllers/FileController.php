@@ -36,23 +36,23 @@ class FileController extends Controller
 
     public function store()
     {
-        $theFile = $request->file('name');
+        $theFile = $request->file('file');
 
         request()->validate([
             $theFile  => 'required|file|max:10240',
             'description' => 'required|string|min:20'
         ],[
-            'name.required' => 'Pero adjunta algo, zopenco.',
-            'name.file' => 'Un archivo, cigoto.',
-            'name.max'  => 'Tampoco me subas tu carpeta del porno.',
+            'file.required' => 'Pero adjunta algo, zopenco.',
+            'file.file' => 'Un archivo, cigoto.',
+            'file.max'  => 'Tampoco me subas tu carpeta del porno.',
             'description.required' => 'Si hace falta invéntatela, pero no lo dejes vacío.',
             'description.string'   => 'Introduce texto, no el nuevo tema de Porta.',
             'description.min' => 'Mínimo 20 caracteres, desgraciao.'
         ]);
 
-        $file = Archivo::create([
+        $theFile = Archivo::create([
             'user_id'       => $request->user()->id,
-            'name'          => $theFile->store('files','public'),
+            'file'          => $theFile->store('files','public'),
             'description'   => request('description')
         ]);     
         

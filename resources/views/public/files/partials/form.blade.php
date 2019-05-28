@@ -2,10 +2,10 @@
     <div class="col">
         <div class="form-group">
             <label for="file">Archivo a subir:</label>
-                <input type="file" id="file" name="file" class="form-control-file mt-1" value="{{ isset($file)?$file->name:old('name') }}">
-                @if( $errors->has('name'))
+                <input type="file" id="file" name="file" class="form-control-file mt-1" value="{{ isset($file)?$file->file:old('file') }}">
+                @if( $errors->has('file'))
                     <div class="invalid-feedback">
-                        {{ $errors->first('name') }}
+                        {{ $errors->first('file') }}
                     </div>
                 @endif
         </div>
@@ -19,5 +19,4 @@
                     </div>
                 @endif
         </div>
-    
 </div>
